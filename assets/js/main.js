@@ -54,7 +54,18 @@ now.setDate(now.getDate());
           zoomControl: true
         });
 
-        
+        var terra = new L.GIBSLayer('MODIS_Terra_Chlorophyll_A', {
+          date: startDate,
+          transparent: true,
+
+        }).addTo(map);
+
+        var aqua = new L.GIBSLayer('MODIS_Aqua_Chlorophyll_A', {
+          date: startDate,
+          transparent: true,
+
+        }).addTo(map);
+
         var aquacolorpicker = L.tileLayer.colorPicker('http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Aqua_Chlorophyll_A/default/'+startDate.getUTCFullYear() + '-' + s2(startDate.getUTCMonth() + 1) + '-' + s2(startDate.getUTCDate()+1)+'/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png',{attribution : '<a href="https://earthdata.nasa.gov/gibs">NASA EOSDIS GIBS</a>' }).addTo(map);
         var tcolorpicker = L.tileLayer.colorPicker('http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Chlorophyll_A/default/'+startDate.getUTCFullYear() + '-' + s2(startDate.getUTCMonth() + 1) + '-' + s2(startDate.getUTCDate()+1)+'/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png',{attribution : '<a href="https://earthdata.nasa.gov/gibs">NASA EOSDIS GIBS</a>'}).addTo(map);
 
@@ -65,24 +76,15 @@ now.setDate(now.getDate());
           var date = strToDateUTC(this.value);
           map.removeLayer(aquacolorpicker);
           map.removeLayer(tcolorpicker);
-         
+          map.removeLayer(aqua);
+          map.removeLayer(terra);
           aquacolorpicker = L.tileLayer.colorPicker('http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Aqua_Chlorophyll_A/default/'+date.getUTCFullYear() + '-' + s2(date.getUTCMonth()+1 ) + '-' + s2(date.getUTCDate())+'/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png',{attribution : '<a href="https://earthdata.nasa.gov/gibs">NASA EOSDIS GIBS</a>' }).addTo(map);
           tcolorpicker = L.tileLayer.colorPicker('http://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_Chlorophyll_A/default/'+date.getUTCFullYear() + '-' + s2(date.getUTCMonth()+1 ) + '-' + s2(date.getUTCDate())+'/GoogleMapsCompatible_Level7/{z}/{y}/{x}.png',{attribution : '<a href="https://earthdata.nasa.gov/gibs">NASA EOSDIS GIBS</a>'}).addTo(map);
 
           console.log(date);
         });
 
-        // var terra = new L.GIBSLayer('MODIS_Terra_Chlorophyll_A', {
-        //   date: startDate,
-        //   transparent: true,
-
-        // }).addTo(map);
-
-        // var aqua = new L.GIBSLayer('MODIS_Aqua_Chlorophyll_A', {
-        //   date: startDate,
-        //   transparent: true,
-
-        // }).addTo(map);
+       
 
         // var layers = L.layerGroup([terra,aqua]);
         // var overLayer = {
