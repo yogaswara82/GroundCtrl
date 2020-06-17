@@ -25,19 +25,19 @@ function http_request($url){
     // mengembalikan hasil curl
     return $output;
 }
-// if (!empty($_GET['kode'])){
-// $kode = $_GET['kode'];}
-//  else {
-// $kode = $_POST['kode'];}    
+if (!empty($_GET['kode'])){
+$kode = $_GET['kode'];}
+else {
+$kode = $_POST['kode'];}    
 
 
 
-//$url='http://maritim.bmkg.go.id/xml/wilayah_pelayanan/prakiraan?kode='.$kode.'&format=json';
+$url='http://maritim.bmkg.go.id/xml/wilayah_pelayanan/prakiraan?kode='.$kode.'&format=json';
 date_default_timezone_set('Asia/Jakarta');
 $hour = date("H");
 
 
- $url='http://api.worldweatheronline.com/premium/v1/marine.ashx?key=65bd05aa76bd457db74201958192311&format=json&tp=1&q='.$_GET['lat'].','.$_GET['lon'];
+ //$url='http://api.worldweatheronline.com/premium/v1/marine.ashx?key=896fdb89d42247e5a8e190752201706&format=json&tp=1&q='.$_GET['lat'].','.$_GET['lon'];
  $profile = http_request($url);
 
 // // ubah string JSON menjadi array

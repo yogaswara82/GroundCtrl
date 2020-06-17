@@ -59,7 +59,7 @@ try {
    
    if($id!=$row['id'])
    {
-    $url='http://api.worldweatheronline.com/premium/v1/marine.ashx?key=88c5ed8977144bb7a0c122828202901&format=json&tp=1&q='.$lat.','.$lon;
+    $url='http://api.worldweatheronline.com/premium/v1/marine.ashx?key=896fdb89d42247e5a8e190752201706&format=json&tp=1&q='.$lat.','.$lon;
     $profile = http_request($url);
     date_default_timezone_set('Asia/Jakarta');
     $hour = date("G");
